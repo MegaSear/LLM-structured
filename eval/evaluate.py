@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Evaluate the extractor against a small hand-labelled gold set.
+Evaluate the extractor against a small hand-labelled GT set.
 
 We report two separate numbers per field, because they answer different
 questions:
   - status accuracy: did we correctly decide FOUND / AMBIGUOUS / MISSING?
     This is the number that matters most for the actual business goal --
     "don't invent data, know what you don't know."
-  - value accuracy: for the fields where gold says FOUND and we also say
+  - value accuracy: for the fields where GT says FOUND and we also say
     FOUND, did we extract the right value?
 
 Run:
@@ -30,7 +30,7 @@ from src.schema import ALL_FIELDS  # noqa: E402
 from src import rule_extractor, llm_extractor  # noqa: E402
 from src.parsers import extract_text  # noqa: E402
 
-GOLD_PATH = ROOT / "data" / "gold" / "gold.json"
+GOLD_PATH = ROOT / "data" / "gt" / "gt.json"
 SAMPLES_DIR = ROOT / "data" / "samples"
 
 
@@ -40,7 +40,7 @@ def _norm(s) -> str:
 
 def _values_match(field: str, predicted, expected) -> bool:
     if expected is None:
-        return True  # gold didn't specify a value to check, only status
+        return True  # gt didn't specify a value to check, only status
     if field in ("company", "station_from", "station_to", "cargo"):
         return _norm(expected) in _norm(predicted) or _norm(predicted) in _norm(expected)
     if field == "volume":
@@ -64,7 +64,7 @@ def _values_match(field: str, predicted, expected) -> bool:
 
 
 def evaluate() -> dict:
-    gold = json.loads(GOLD_PATH.read_text(encoding="utf-8"))
+    gt = json.loads(GOLD_PATH.read_text(encoding="utf-8"))
 
     per_field_status_correct = {f: 0 for f in ALL_FIELDS}
     per_field_total = {f: 0 for f in ALL_FIELDS}
@@ -74,7 +74,7 @@ def evaluate() -> dict:
 
     completeness_correct = 0
 
-    for filename, expected_fields in gold.items():
+    for filename, expected_fields in gt.items():
         path = SAMPLES_DIR / filename
         if not path.exists():
             print(f"!! sample missing on disk: {filename}", file=sys.stderr)
@@ -130,7 +130,7 @@ def evaluate() -> dict:
         if result.is_complete() == expected_complete:
             completeness_correct += 1
 
-    n_samples = len(gold)
+    n_samples = len(gt)
     report = {
         "n_samples": n_samples,
         "completeness_decision_accuracy": completeness_correct / n_samples,
@@ -152,7 +152,7 @@ def render_markdown(report: dict) -> str:
         "# Результаты оценки качества",
         "",
         f"Выборка: {report['n_samples']} размеченных вручную заявок "
-        f"(`data/samples/` + `data/gold/gold.json`).",
+        f"(`data/samples/` + `data/gt/gt.json`).",
         "",
         f"**Точность решения \"заявка полная / неполная\": "
         f"{report['completeness_decision_accuracy']:.0%}**",

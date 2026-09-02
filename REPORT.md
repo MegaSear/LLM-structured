@@ -21,8 +21,8 @@ LLM-structured/
 │
 ├── data/
 │   ├── samples/
-│   └── gold/
-│       └── gold.json
+│   └── gt/
+│       └── gt.json
 │
 └── eval/
     ├── evaluate.py
