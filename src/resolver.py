@@ -277,6 +277,7 @@ def resolve(
                 value=None,
                 source=FieldSource.RULE_LLM,
                 confidence=None,
+                evidence=rule.evidence, note=rule.note,
             )
             continue
 
@@ -288,6 +289,7 @@ def resolve(
                 value=None,
                 source=FieldSource.RULE_LLM,
                 confidence=None,
+                evidence=rule.evidence, note=rule.note,
             )
             continue
 
@@ -304,7 +306,7 @@ def resolve(
                     value=None,
                     source=FieldSource.RULE_LLM,
                     confidence=None,
-                    note="Правило и LLM извлекли разные значения.",
+                    evidence=rule.evidence, note="Правило и LLM извлекли разные значения.",
                 )
             continue
 
