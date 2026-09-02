@@ -1,0 +1,15 @@
+# Core (required to run the pipeline / CLI)
+python-docx==1.2.0
+pdfplumber==0.11.9
+openpyxl==3.1.5
+pymorphy3
+
+# Dev / testing
+pytest==9.1.1
+
+# LLM
+langchain_groq
+
+# Only used by data/samples/make_samples.py to (re)generate the PDF sample —
+# not needed to run the extractor itself.
+reportlab==4.4.10

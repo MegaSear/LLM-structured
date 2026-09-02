@@ -1,0 +1,113 @@
+{
+  "sample_01_full.txt": {
+    "company": {"status": "found", "value": "АгроТранс"},
+    "station_from": {"status": "found", "value": "Ставрополь"},
+    "station_to": {"status": "found", "value": "Новороссийск-Экспортный"},
+    "cargo": {"status": "found", "value": "пшеница"},
+    "volume": {"status": "found", "value": {"quantity": 20.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": {"start": "01.10.2026", "end": "15.10.2026"}},
+    "loading_conditions": {"status": "found"},
+    "budget": {"status": "found", "value": {"amount": 1200.0, "currency": "RUB"}}
+  },
+  "sample_02_missing_destination_and_period.txt": {
+    "company": {"status": "found", "value": "Зерно-Юг"},
+    "station_from": {"status": "found", "value": "Тихорецкая"},
+    "station_to": {"status": "missing"},
+    "cargo": {"status": "found", "value": "кукуруза"},
+    "volume": {"status": "found", "value": {"quantity": 15.0, "unit": "вагон"}},
+    "period": {"status": "missing"},
+    "loading_conditions": {"status": "found"},
+    "budget": {"status": "missing"}
+  },
+  "sample_03_ambiguous_cargo_volume_period.txt": {
+    "company": {"status": "found", "value": "ХлебТорг"},
+    "station_from": {"status": "found", "value": "Ростов-на-Дону"},
+    "station_to": {"status": "missing"},
+    "cargo": {"status": "ambiguous"},
+    "volume": {"status": "ambiguous"},
+    "period": {"status": "ambiguous"},
+    "loading_conditions": {"status": "missing"},
+    "budget": {"status": "missing"}
+  },
+  "sample_04_two_stations_no_keywords.txt": {
+    "company": {"status": "found", "value": "Сидоров"},
+    "station_from": {"status": "ambiguous", "value": "Оренбург"},
+    "station_to": {"status": "ambiguous", "value": "Новороссийск"},
+    "cargo": {"status": "found", "value": "ячмень"},
+    "volume": {"status": "found", "value": {"quantity": 8.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": "март 2027"},
+    "loading_conditions": {"status": "missing"},
+    "budget": {"status": "missing"}
+  },
+  "sample_05_email_missing_destination_budget.eml": {
+    "company": {"status": "found", "value": "Восток-Агро"},
+    "station_from": {"status": "found", "value": "Волгоград-1"},
+    "station_to": {"status": "missing"},
+    "cargo": {"status": "found", "value": "рожь"},
+    "volume": {"status": "found", "value": {"quantity": 25.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": "сентябрь 2026"},
+    "loading_conditions": {"status": "missing"},
+    "budget": {"status": "missing"}
+  },
+  "sample_06_full.docx": {
+    "company": {"status": "found", "value": "СибЗернопродукт-Восток"},
+    "station_from": {"status": "found", "value": "Барнаул"},
+    "station_to": {"status": "found", "value": "Новороссийск"},
+    "cargo": {"status": "found", "value": "соя"},
+    "volume": {"status": "found", "value": {"quantity": 30.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": {"start": "01.11.2026", "end": "30.11.2026"}},
+    "loading_conditions": {"status": "found"},
+    "budget": {"status": "found", "value": {"amount": 1500.0, "currency": "RUB"}}
+  },
+  "sample_07_partial_no_company.pdf": {
+    "company": {"status": "missing"},
+    "station_from": {"status": "found", "value": "Курск"},
+    "station_to": {"status": "found", "value": "Новороссийск"},
+    "cargo": {"status": "found", "value": "пшеница"},
+    "volume": {"status": "found", "value": {"quantity": 40.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": "1 квартал 2027"},
+    "loading_conditions": {"status": "missing"},
+    "budget": {"status": "missing"}
+  },
+  "sample_08_full_alt_phrasing.txt": {
+    "company": {"status": "found", "value": "СибЗернопродукт"},
+    "station_from": {"status": "found", "value": "Омск"},
+    "station_to": {"status": "found", "value": "Новороссийск"},
+    "cargo": {"status": "found", "value": "соя"},
+    "volume": {"status": "found", "value": {"min": 12.0, "max": 18.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": "1 квартал 2027"},
+    "loading_conditions": {"status": "found"},
+    "budget": {"status": "found", "value": {"amount": 900.0, "currency": "RUB"}}
+  },
+  "sample_09_full.xlsx": {
+    "company": {"status": "found", "value": "ЮгХлебТрейд"},
+    "station_from": {"status": "found", "value": "Ставрополь"},
+    "station_to": {"status": "found", "value": "Новороссийск-Экспортный"},
+    "cargo": {"status": "found", "value": "ячмень"},
+    "volume": {"status": "found", "value": {"quantity": 18.0, "unit": "вагон"}},
+    "period": {"status": "found", "value": {"start": "10.09.2026", "end": "25.09.2026"}},
+    "loading_conditions": {"status": "found"},
+    "budget": {"status": "found", "value": {"amount": 1100.0, "currency": "RUB"}}
+  },
+  "sample_10_ambiguous_route.txt":  {
+  "company": {"status": "found", "value": "АгроЛогистик"},
+  "station_from": {"status": "ambiguous"},
+  "station_to": {"status": "found", "value": "Новороссийск"},
+  "cargo": {"status": "found", "value": "пшеница"},
+  "volume": {"status": "found", "value": {"quantity": 20.0, "unit": "вагон"}},
+  "period": {"status": "found", "value": "вторая половина октября 2026 года"},
+  "loading_conditions": {"status": "found"},
+  "budget": {"status": "missing"}
+  },
+  "sample_11_noise.txt":
+  {
+  "company": {"status": "found", "value": "ЗерноЭкспорт"},
+  "station_from": {"status": "found", "value": "Курск"},
+  "station_to": {"status": "found", "value": "Новороссийск"},
+  "cargo": {"status": "found", "value": "ячмень"},
+  "volume": {"status": "found", "value": {"quantity": 30.0, "unit": "вагон"}},
+  "period": {"status": "found", "value": "ноябрь 2026 года"},
+  "loading_conditions": {"status": "found"},
+  "budget": {"status": "found", "value": {"amount": 1400.0, "currency": "RUB"}}
+}
+}
