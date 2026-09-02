@@ -179,6 +179,6 @@ openai/gpt-oss-20b
 | `budget`             |  **80%** |
 
 
-Полный отчёт находится в [`eval/results.md`](eval/results.md).
+Полный отчёт от системы находится в [`eval/results.md`](eval/results.md).
 
 ---
